@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Montserrat+Alternates:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Feliz Aniversário</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat Alternates', sans-serif;
+            color: #fff;
+            position: relative;
+        }
+
+        .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #1a2a4a, #243b6b);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        nav {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav ul .logo {
+            font-size: 5rem;
+            color: #FFD966;
+        }
+
+        nav ul .menu-item {
+            margin-left: auto;
+            font-size: 1.2rem;
+        }
+
+        nav ul .menu-item + .menu-item {
+            margin-left: 2rem;
+        }
+
+        nav ul li a:hover {
+            color: #FFD966;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: auto;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: #FFD966;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .main {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .main h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .main h1 i {
+            color: red;
+        }
+
+        .message-container {
+            padding: 2.5rem;
+            text-align: justify;
+            text-justify: inter-word;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 230, 255, 0.2);
+            line-height: 1.8;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        .message-container p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .message-container p:last-child {
+            margin-bottom: 0;
+        }
+
+        .special-message {
+            margin-top: 3rem;
+            padding: 3rem 2.5rem;
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.1), rgba(147, 112, 219, 0.1));
+            border: 2px solid rgba(255, 215, 230, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-message::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #ffa07a, #ff6b9d);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(10px);
+        }
+
+        .special-message h2 {
+            font-family: 'Sacramento', cursive;
+            font-size: 3rem;
+            color: #ffc4e1;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(255, 196, 225, 0.5);
+        }
+
+        .special-message .date {
+            font-size: 1.3rem;
+            color: #FFD966;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .special-message p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .special-message p:last-child {
+            margin-bottom: 0;
+        }
+
+        .heart-decoration {
+            color: #ff6b9d;
+            font-size: 1.2rem;
+            margin: 0 0.3rem;
+        }
+
+        .highlight {
+            color: #FFD966;
+            font-weight: 500;
+        }
+
+        .emphasis {
+            color: #ffc4e1;
+            font-weight: 500;
+        }
+
+        /* Botão da Carta */
+        .letter-section {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .letter-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .open-button {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .open-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .open-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .open-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+        }
+
+        .open-button:active {
+            transform: translateY(-1px);
+        }
+
+        .open-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 1s ease;
+            width: 100%;
+        }
+
+        .letter-content.show {
+            max-height: 10000px;
+            opacity: 1;
+            margin-top: 2rem;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.9);
+                pointer-events: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul .menu-item {
+                display: none;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            nav ul .menu-item.show {
+                display: block;
+            }
+
+            nav ul .menu-item + .menu-item {
+                margin-left: 0;
+            }
+
+            .main h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul .logo {
+                font-size: 3rem;
+            }
+            
+            .message-container {
+                padding: 1.5rem;
+            }
+
+            .special-message {
+                padding: 2rem 1.5rem;
+            }
+
+            .special-message h2 {
+                font-size: 2.2rem;
+            }
+
+            .special-message .date {
+                font-size: 1.1rem;
+            }
+
+            .envelope-wrapper {
+                width: 250px;
+                height: 170px;
+            }
+
+            .envelope-flap {
+                border-left: 125px solid transparent;
+                border-right: 125px solid transparent;
+                border-top: 85px solid #ffc4e1;
+            }
+
+            .envelope-body {
+                width: 250px;
+                height: 125px;
+            }
+
+            .envelope-body::before {
+                border-left: 125px solid transparent;
+                border-right: 125px solid transparent;
+                border-bottom: 85px solid #ff9ec4;
+            }
+
+            .letter-paper {
+                width: 210px;
+                height: 240px;
+            }
+
+            .letter-icon {
+                font-size: 2.5rem;
+            }
+
+            .open-instruction {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="night">
+    <div class="star-field"></div>
+    <nav>
+        <ul>
+            <li class="logo"><i class="bi bi-cloud-moon-fill"></i></li>
+            <li class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </li>
+            <li class="menu-item"><a>Músicas</a></li>
+            <li class="menu-item"><a>Uma mensagem para você</a></li>
+            <li class="menu-item"><a>Sobre esse site</a></li>
+        </ul>
+    </nav>
+    <section class="main">
+        <h1>Feliz Aniversário, meu amor <i class="bi bi-hearts"></i></h1>
+        
+        <div class="message-container">
+            <p>
+                Meus parabéns ❤️ <span class="highlight">FELIZ ANIVERSÁRIO</span>, boba. Hoje é um dia muito importante e eu estava ansioso por ele. Quero desejar tudo de melhor. Felicidade, saúde, grandes conquistas... Você é incrível, sempre vou admirar tudo que fez e faz. <span class="emphasis">Sempre vou te admirar.</span>
+            </p>
+            
+            <p>
+                Hoje é a data em que a única bebê decidiu nascer naquele hospital da pequena cidade do Ceará. Estou realmente feliz por estar comemorando essa data com você, mesmo que distante, saiba que estou torcendo por ti todos os dias.
+            </p>
+            
+            <p>
+                Um bebê que nasceu dormindo, cheio de preguiça kkkkkkk. Eu estou feliz por te conhecer desde 2021. Te conheci quando estava no ensino médio e mesmo naquela época você me mostrava o quanto era capaz. Do quanto é inteligente e forte. Se tornou uma mulher maravilhosa. Na verdade, mesmo na adolescência, você sempre foi uma mulher incrível. Sempre cresceu mais do que o próprio tempo poderia acompanhar.
+            </p>
+            
+            <p>
+                Parabéns por ter <span class="emphasis">chegado</span> tão longe, por ter conquistado tanto, por construir tanta coisa do zero. Sei que costuma dizer que é sua obrigação chegar onde chegou, entretanto, eu discordo. Você soube pegar suas pequenas oportunidades e mostrar que você merece, que você se esforça e demonstra isso a cada minuto que passa. <span class="emphasis">Te admiro. Admiro demais.</span>
+            </p>
+            
+            <p>
+                E como você finalmente chegou aos 21 anos, já posso falar a mesma coisa que você diz pra mim: <span class="highlight">V E L H A</span>. Muito velha kkkkkkk. Te amo.
+            </p>
+            
+            <p>
+                Por causa deste dia tão importante eu resolvi que iria te entregar um presente. Espero que goste deste site. Ele foi feito à mão, cada linha de código. É a forma que encontrei de te presentear estando distante.
+            </p>
+            
+            <p>
+                O site tem o tema <span class="emphasis">"Noite"</span>. Foi pensado neste tema por dois motivos: por volta deste horário que te conheci e também porque sua cor favorita é azul.
+            </p>
+            
+            <p>
+                Uma curiosidade: eu queria te dar o "polvo de pelúcia do humor". Há um tempo atrás você comentou comigo que queria, mas não tinha encontrado onde você mora. Então eu realmente gravei isso e era algo que eu quero dar a você.
+            </p>
+            
+            <p>
+                Porém, como estou distante, eu fiz esse site. Saiba que <span class="emphasis">cada linha de código é um pedacinho do meu amor por você tomando forma</span>. É um jeito de dizer que te amo, um jeito de explicar com ações o quanto seu aniversário é importante pra mim. Espero que goste ❤️
+            </p>
+        </div>
+
+        <!-- Botão para Abrir Mensagem -->
+        <div class="letter-section">
+            <div class="letter-display" id="letterDisplay">
+                <button class="open-button" id="openButton">
+                    <span>Abrir Mensagem Especial 💌</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="letter-content" id="letterContent">
+            <div class="special-message">
+                <h2>Uma mensagem para você <i class="bi bi-hearts heart-decoration"></i></h2>
+                <p class="date">15/12/2021</p>
+                
+                <p>
+                    Gosto de lembrar desta data. Minha primeira mensagem pra você em particular para que desabafasse comigo sem que ninguém pudesse ver. Eu nunca imaginaria que aquilo fosse início de algo tão importante pra mim. <span class="emphasis">Minha amizade com você foi se construindo tão aos pouquinhos.</span> Como se estivesse colocando peça por peça com muita calma e paciência.
+                </p>
+                
+                <p>
+                    Eu nem sequer notei que após algumas noites contigo eu já estava ansioso pelas noites com você. Pelas risadas e brincadeiras. Cada noite do seu lado me fazia esquecer o dia seguinte. Me fazia esquecer de tudo. Então, após um tempo tudo que eu queria era estar com você. Infelizmente o tempo passava tão rápido que chegava a ser injusto. <span class="highlight">Sua risada, suas frases erradas, suas brincadeiras bobas... Se tornaram a melhor parte da minha vida.</span>
+                </p>
+                
+                <p>
+                    Quando notei estava apaixonado e tentava de muitas maneiras falhas te dizer que te amava. Tentava fazer você perceber. Seja com músicas, indiretas, mensagens, você nunca chegou nem perto de suspeitar kkkkkkkkkk. <span class="emphasis">A culpa é minha por ser horrível em indiretas ou sua por ser lerda?</span>
+                </p>
+                
+                <p>
+                    E então, quando finalmente me declarei você conseguiu achar um jeito de negar e perguntar no dia seguinte se eu estava bêbado kkkkkkkkkkkkkk como pode, amor? Eu ri tanto.
+                </p>
+                
+                <p>
+                    <span class="emphasis">Esse é o maior motivo por te amar tanto.</span> Por querer lutar por você, por estar disposto a fazer de tudo pra segurar sua mão.
+                </p>
+            
+                <p>
+                    Mesmo após anos, nossa relação não mudou. Bom, mudou. Hoje sou seu namorado, mas eu digo que meus sentimentos não mudaram nem um pouco. Você ainda me faz rir do mesmo jeito, me faz esquecer do tempo quando estou contigo. Me deixa feliz apenas em receber seu "bom dia" e <span class="highlight">me sinto o homem mais sortudo do mundo quando você diz que me ama.</span>
+                </p>
+                
+                <p>
+                    Os dias passaram e eu continuo a mesma pessoa apaixonada por você.
+                </p>
+                
+                <p>
+                    Mesmo que nosso tempo esteja mais curto hoje em dia. Ou que nossas rotinas acabem tornando tudo um pouco mais complicado, apenas saiba que faz parte e que eu te amo. Te apoio. E que vou estar esperando você.
+                </p>
+                
+                <p>
+                    <span class="emphasis">Você é o melhor presente desse mundo.</span> Sua atenção, seu amor, sua fofura e poder estar do seu lado é a melhor coisa que já me aconteceu. Porque você me faz bem, me faz sorrir, porque meu mundo é você.
+                </p>
+                
+                <p>
+                 Quero estar logo perto de você. Te animar quando estiver pra baixo, te levar pra sair, te abraçar a todo momento, acordar ao seu lado, te chamar pra ir no cinema comigo, levar doces e besteiras pra você, te presentear a cada conquista sua, dançar contigo, olhar seu sorriso, dizer todos os dias o quanto te amo enquanto seguro sua mão. <span class="highlight">Se um dia o universo for ainda mais generoso vou querer ter filhos contigo e formarmos nossa família juntos.</span> Nós dois com nossos filhos.
+                </p>
+                
+                <p>
+                    Nunca se esqueça o quanto te amo e sempre vou te amar. Independente do nosso futuro saiba que <span class="emphasis">meu coração sempre vai ser seu, boba.</span>
+                </p>
+                
+                <p>
+                    <span class="highlight">Feliz aniversário, meu amor.</span> Quero passar anos e anos com você. Quero estar sempre ao seu lado. Estou torcendo por ti, torcendo por nós.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        const starCount = 200; 
+        const container = document.querySelector('.star-field');
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+
+            const size = Math.random() * 2 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+
+            star.style.backgroundColor = Math.random() > 0.8 ? '#f5e6ff' : '#fff';
+
+            star.style.animation = `twinkle ${5 + Math.random() * 5}s infinite alternate`;
+
+            container.appendChild(star);
+        }
+
+        // Menu Hambúrguer
+        const hamburger = document.querySelector('.hamburger');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            menuItems.forEach(item => {
+                item.classList.toggle('show');
+            });
+        });
+
+        // Animação da Carta
+        const openButton = document.getElementById('openButton');
+        const letterDisplay = document.getElementById('letterDisplay');
+        const letterContent = document.getElementById('letterContent');
+
+        openButton.addEventListener('click', () => {
+            // Fade out do botão e envelope
+            letterDisplay.classList.add('fade-out');
+            
+            // Mostrar conteúdo da carta
+            setTimeout(() => {
+                letterContent.classList.add('show');
+                letterDisplay.style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
