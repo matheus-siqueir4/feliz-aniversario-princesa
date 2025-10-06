@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Montserrat+Alternates:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sacramento&family=Montserrat+Alternates:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <title>Feliz Aniversário</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -41,9 +44,20 @@
         }
 
         @keyframes twinkle {
-            0% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0.3; transform: scale(0.8); }
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
         }
 
         nav {
@@ -73,7 +87,7 @@
             font-size: 1.2rem;
         }
 
-        nav ul .menu-item + .menu-item {
+        nav ul .menu-item+.menu-item {
             margin-left: 2rem;
         }
 
@@ -149,6 +163,58 @@
 
         .message-container p:last-child {
             margin-bottom: 0;
+        }
+
+        /* Espaço do Vídeo */
+        .video-container {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 230, 255, 0.2);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        .video-container:hover {
+            box-shadow: 0 6px 20px rgba(255, 230, 255, 0.3);
+            border-color: rgba(255, 215, 230, 0.5);
+        }
+
+        .video-title {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.5rem;
+            color: #ffc4e1;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 196, 225, 0.5);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #000;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .video-description {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.05rem;
+            color: #FFD966;
+            font-style: italic;
         }
 
         .special-message {
@@ -333,20 +399,28 @@
                 display: block;
             }
 
-            nav ul .menu-item + .menu-item {
+            nav ul .menu-item+.menu-item {
                 margin-left: 0;
             }
 
             .main h1 {
                 font-size: 2.5rem;
             }
-            
+
             nav ul .logo {
                 font-size: 3rem;
             }
-            
+
             .message-container {
                 padding: 1.5rem;
+            }
+
+            .video-container {
+                padding: 1.5rem;
+            }
+
+            .video-title {
+                font-size: 2rem;
             }
 
             .special-message {
@@ -360,44 +434,15 @@
             .special-message .date {
                 font-size: 1.1rem;
             }
+        }
 
-            .envelope-wrapper {
-                width: 250px;
-                height: 170px;
-            }
-
-            .envelope-flap {
-                border-left: 125px solid transparent;
-                border-right: 125px solid transparent;
-                border-top: 85px solid #ffc4e1;
-            }
-
-            .envelope-body {
-                width: 250px;
-                height: 125px;
-            }
-
-            .envelope-body::before {
-                border-left: 125px solid transparent;
-                border-right: 125px solid transparent;
-                border-bottom: 85px solid #ff9ec4;
-            }
-
-            .letter-paper {
-                width: 210px;
-                height: 240px;
-            }
-
-            .letter-icon {
-                font-size: 2.5rem;
-            }
-
-            .open-instruction {
-                font-size: 1rem;
-            }
+        a {
+            text-decoration: none;
+            color: #fff;
         }
     </style>
 </head>
+
 <body class="night">
     <div class="star-field"></div>
     <nav>
@@ -408,49 +453,117 @@
                 <span></span>
                 <span></span>
             </li>
-            <li class="menu-item"><a>Músicas</a></li>
-            <li class="menu-item"><a>Uma mensagem para você</a></li>
-            <li class="menu-item"><a>Sobre esse site</a></li>
+            <li class="menu-item"><a href="#musica">Músicas</a></li>
+            <li class="menu-item"><a href="#letterContent">Uma mensagem para você</a></li>
+            <li class="menu-item"><a href="#sobre">Sobre esse site</a></li>
         </ul>
     </nav>
     <section class="main">
         <h1>Feliz Aniversário, meu amor <i class="bi bi-hearts"></i></h1>
-        
+
         <div class="message-container">
             <p>
-                Meus parabéns ❤️ <span class="highlight">FELIZ ANIVERSÁRIO</span>, boba. Hoje é um dia muito importante e eu estava ansioso por ele. Quero desejar tudo de melhor. Felicidade, saúde, grandes conquistas... Você é incrível, sempre vou admirar tudo que fez e faz. <span class="emphasis">Sempre vou te admirar.</span>
+                Meus parabéns ❤️ <span class="highlight">FELIZ ANIVERSÁRIO</span>, boba. Hoje é um dia muito importante
+                e eu estava ansioso por ele. Quero desejar tudo de melhor. Felicidade, saúde, grandes conquistas... Você
+                é incrível, sempre vou admirar tudo que fez e faz. <span class="emphasis">Sempre vou te admirar.</span>
             </p>
-            
+
             <p>
-                Hoje é a data em que a única bebê decidiu nascer naquele hospital da pequena cidade do Ceará. Estou realmente feliz por estar comemorando essa data com você, mesmo que distante, saiba que estou torcendo por ti todos os dias.
+                Hoje é a data em que a única bebê decidiu nascer naquele hospital da pequena cidade do Ceará. Estou
+                realmente feliz por estar comemorando essa data com você, mesmo que distante, saiba que estou torcendo
+                por ti todos os dias.
             </p>
-            
+
             <p>
-                Um bebê que nasceu dormindo, cheio de preguiça kkkkkkk. Eu estou feliz por te conhecer desde 2021. Te conheci quando estava no ensino médio e mesmo naquela época você me mostrava o quanto era capaz. Do quanto é inteligente e forte. Se tornou uma mulher maravilhosa. Na verdade, mesmo na adolescência, você sempre foi uma mulher incrível. Sempre cresceu mais do que o próprio tempo poderia acompanhar.
+                Um bebê que nasceu dormindo, cheio de preguiça kkkkkkk. Eu estou feliz por te conhecer desde 2021. Te
+                conheci quando estava no ensino médio e mesmo naquela época você me mostrava o quanto era capaz. Do
+                quanto é inteligente e forte. Se tornou uma mulher maravilhosa. Na verdade, mesmo na adolescência, você
+                sempre foi uma mulher incrível. Sempre cresceu mais do que o próprio tempo poderia acompanhar.
             </p>
-            
+
             <p>
-                Parabéns por ter <span class="emphasis">chegado</span> tão longe, por ter conquistado tanto, por construir tanta coisa do zero. Sei que costuma dizer que é sua obrigação chegar onde chegou, entretanto, eu discordo. Você soube pegar suas pequenas oportunidades e mostrar que você merece, que você se esforça e demonstra isso a cada minuto que passa. <span class="emphasis">Te admiro. Admiro demais.</span>
+                Parabéns por ter <span class="emphasis">chegado</span> tão longe, por ter conquistado tanto, por
+                construir tanta coisa do zero. Sei que costuma dizer que é sua obrigação chegar onde chegou, entretanto,
+                eu discordo. Você soube pegar suas pequenas oportunidades e mostrar que você merece, que você se esforça
+                e demonstra isso a cada minuto que passa. <span class="emphasis">Te admiro. Admiro demais.</span>
             </p>
-            
+
             <p>
-                E como você finalmente chegou aos 21 anos, já posso falar a mesma coisa que você diz pra mim: <span class="highlight">V E L H A</span>. Muito velha kkkkkkk. Te amo.
+                E como você finalmente chegou aos 21 anos, já posso falar a mesma coisa que você diz pra mim: <span
+                    class="highlight">V E L H A</span>. Muito velha kkkkkkk. Te amo.
             </p>
-            
+
             <p>
-                Por causa deste dia tão importante eu resolvi que iria te entregar um presente. Espero que goste deste site. Ele foi feito à mão, cada linha de código. É a forma que encontrei de te presentear estando distante.
+                Por causa deste dia tão importante eu resolvi que iria te entregar um presente. Espero que goste deste
+                site. Ele foi feito à mão, cada linha de código. É a forma que encontrei de te presentear estando
+                distante.
             </p>
-            
+
             <p>
-                O site tem o tema <span class="emphasis">"Noite"</span>. Foi pensado neste tema por dois motivos: por volta deste horário que te conheci e também porque sua cor favorita é azul.
+                O site tem o tema <span class="emphasis">"Noite"</span>. Foi pensado neste tema por dois motivos: por
+                volta deste horário que te conheci e também porque sua cor favorita é azul.
             </p>
-            
+
             <p>
-                Uma curiosidade: eu queria te dar o "polvo de pelúcia do humor". Há um tempo atrás você comentou comigo que queria, mas não tinha encontrado onde você mora. Então eu realmente gravei isso e era algo que eu quero dar a você.
+                Uma curiosidade: eu queria te dar o "polvo de pelúcia do humor". Há um tempo atrás você comentou comigo
+                que queria, mas não tinha encontrado onde você mora. Então eu realmente gravei isso e era algo que eu
+                quero dar a você.
             </p>
-            
+
             <p>
-                Porém, como estou distante, eu fiz esse site. Saiba que <span class="emphasis">cada linha de código é um pedacinho do meu amor por você tomando forma</span>. É um jeito de dizer que te amo, um jeito de explicar com ações o quanto seu aniversário é importante pra mim. Espero que goste ❤️
+                Porém, como estou distante, eu fiz esse site. Saiba que <span class="emphasis">cada linha de código é um
+                    pedacinho do meu amor por você tomando forma</span>. É um jeito de dizer que te amo, um jeito de
+                explicar com ações o quanto seu aniversário é importante pra mim. Espero que goste ❤️
+            </p>
+        </div>
+
+        <!-- Espaço para Vídeo -->
+        <div class="video-container">
+            <h2 class="video-title">Um momento especial <i class="bi bi-heart-fill heart-decoration"></i></h2>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="video.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+            </div>
+            <p class="video-description">Feito com todo carinho para você ✨</p>
+        </div>
+
+        <!-- Seção de Músicas -->
+        <div class="message-container" style="margin-top: 3rem;" id="musica">
+            <h2
+                style="font-family: 'Sacramento', cursive; font-size: 2.5rem; color: #ffc4e1; text-align: center; margin-bottom: 2rem; text-shadow: 0 0 10px rgba(255, 196, 225, 0.5);">
+                Músicas que me fazem lembrar de você <i class="bi bi-music-note-beamed heart-decoration"></i>
+            </h2>
+
+            <p>
+                Neste trecho destaquei algumas músicas que sempre me fazem lembrar de você.
+            </p>
+
+            <p>
+                <span class="highlight">Ruth B. - Dandelions</span><br>
+                Essa música tem um significado especial para mim. Afinal, foi a primeira música que você me disse que
+                toda vez que ouvia se lembrava de mim. E eu realmente fiquei feliz em saber.
+            </p>
+
+            <p>
+                <span class="highlight">Far Away - Boywithuke</span><br>
+                Essa música foi uma que usei para tentar me declarar a você. Porém, acabou dando tudo errado e você não
+                entendendo nada kkkkk. Faz sentido. Não vou te culpar, acho que eu não deixei claro o suficiente. Gosto
+                desta música porque sempre me lembra você. Mandei essa música pra você uma noite antes de me declarar
+                dizendo que te amo.
+            </p>
+
+            <p>
+                <span class="highlight">Sweater Weather - The Neighbourhood</span><br>
+                Essa música me lembra você pois sempre ouvíamos juntos em call e acho que foi uma das primeiras que
+                coloquei pra gente ouvir quando nos conhecemos.
+            </p>
+
+            <p>
+                <span class="highlight">Say You Won't Let Go - James Arthur</span><br>
+                Eu gosto dessa música e citei ela aqui por gostar muito da letra. Quero que minha vida com você seja
+                exatamente como nos versos dessa música.
             </p>
         </div>
 
@@ -467,60 +580,91 @@
             <div class="special-message">
                 <h2>Uma mensagem para você <i class="bi bi-hearts heart-decoration"></i></h2>
                 <p class="date">15/12/2021</p>
-                
+
                 <p>
-                    Gosto de lembrar desta data. Minha primeira mensagem pra você em particular para que desabafasse comigo sem que ninguém pudesse ver. Eu nunca imaginaria que aquilo fosse início de algo tão importante pra mim. <span class="emphasis">Minha amizade com você foi se construindo tão aos pouquinhos.</span> Como se estivesse colocando peça por peça com muita calma e paciência.
+                    Gosto de lembrar desta data. Minha primeira mensagem pra você em particular para que desabafasse
+                    comigo sem que ninguém pudesse ver. Eu nunca imaginaria que aquilo fosse início de algo tão
+                    importante pra mim. <span class="emphasis">Minha amizade com você foi se construindo tão aos
+                        pouquinhos.</span> Como se estivesse colocando peça por peça com muita calma e paciência.
                 </p>
-                
+
                 <p>
-                    Eu nem sequer notei que após algumas noites contigo eu já estava ansioso pelas noites com você. Pelas risadas e brincadeiras. Cada noite do seu lado me fazia esquecer o dia seguinte. Me fazia esquecer de tudo. Então, após um tempo tudo que eu queria era estar com você. Infelizmente o tempo passava tão rápido que chegava a ser injusto. <span class="highlight">Sua risada, suas frases erradas, suas brincadeiras bobas... Se tornaram a melhor parte da minha vida.</span>
+                    Eu nem sequer notei que após algumas noites contigo eu já estava ansioso pelas noites com você.
+                    Pelas risadas e brincadeiras. Cada noite do seu lado me fazia esquecer o dia seguinte. Me fazia
+                    esquecer de tudo. Então, após um tempo tudo que eu queria era estar com você. Infelizmente o tempo
+                    passava tão rápido que chegava a ser injusto. <span class="highlight">Sua risada, suas frases
+                        erradas, suas brincadeiras bobas... Se tornaram a melhor parte da minha vida.</span>
                 </p>
-                
+
                 <p>
-                    Quando notei estava apaixonado e tentava de muitas maneiras falhas te dizer que te amava. Tentava fazer você perceber. Seja com músicas, indiretas, mensagens, você nunca chegou nem perto de suspeitar kkkkkkkkkk. <span class="emphasis">A culpa é minha por ser horrível em indiretas ou sua por ser lerda?</span>
+                    Quando notei estava apaixonado e tentava de muitas maneiras falhas te dizer que te amava. Tentava
+                    fazer você perceber. Seja com músicas, indiretas, mensagens, você nunca chegou nem perto de
+                    suspeitar kkkkkkkkkk. <span class="emphasis">A culpa é minha por ser horrível em indiretas ou sua
+                        por ser lerda?</span>
                 </p>
-                
+
                 <p>
-                    E então, quando finalmente me declarei você conseguiu achar um jeito de negar e perguntar no dia seguinte se eu estava bêbado kkkkkkkkkkkkkk como pode, amor? Eu ri tanto.
+                    E então, quando finalmente me declarei você conseguiu achar um jeito de negar e perguntar no dia
+                    seguinte se eu estava bêbado kkkkkkkkkkkkkk como pode, amor? Eu ri tanto.
                 </p>
-                
+
                 <p>
-                    <span class="emphasis">Esse é o maior motivo por te amar tanto.</span> Por querer lutar por você, por estar disposto a fazer de tudo pra segurar sua mão.
+                    <span class="emphasis">Esse é o maior motivo por te amar tanto.</span> Por querer lutar por você,
+                    por estar disposto a fazer de tudo pra segurar sua mão.
                 </p>
-            
+
                 <p>
-                    Mesmo após anos, nossa relação não mudou. Bom, mudou. Hoje sou seu namorado, mas eu digo que meus sentimentos não mudaram nem um pouco. Você ainda me faz rir do mesmo jeito, me faz esquecer do tempo quando estou contigo. Me deixa feliz apenas em receber seu "bom dia" e <span class="highlight">me sinto o homem mais sortudo do mundo quando você diz que me ama.</span>
+                    Mesmo após anos, nossa relação não mudou. Bom, mudou. Hoje sou seu namorado, mas eu digo que meus
+                    sentimentos não mudaram nem um pouco. Você ainda me faz rir do mesmo jeito, me faz esquecer do tempo
+                    quando estou contigo. Me deixa feliz apenas em receber seu "bom dia" e <span class="highlight">me
+                        sinto o homem mais sortudo do mundo quando você diz que me ama.</span>
                 </p>
-                
+
                 <p>
                     Os dias passaram e eu continuo a mesma pessoa apaixonada por você.
                 </p>
-                
+
                 <p>
-                    Mesmo que nosso tempo esteja mais curto hoje em dia. Ou que nossas rotinas acabem tornando tudo um pouco mais complicado, apenas saiba que faz parte e que eu te amo. Te apoio. E que vou estar esperando você.
+                    Mesmo que nosso tempo esteja mais curto hoje em dia. Ou que nossas rotinas acabem tornando tudo um
+                    pouco mais complicado, apenas saiba que faz parte e que eu te amo. Te apoio. E que vou estar
+                    esperando você.
                 </p>
-                
+
                 <p>
-                    <span class="emphasis">Você é o melhor presente desse mundo.</span> Sua atenção, seu amor, sua fofura e poder estar do seu lado é a melhor coisa que já me aconteceu. Porque você me faz bem, me faz sorrir, porque meu mundo é você.
+                    <span class="emphasis">Você é o melhor presente desse mundo.</span> Sua atenção, seu amor, sua
+                    fofura e poder estar do seu lado é a melhor coisa que já me aconteceu. Porque você me faz bem, me
+                    faz sorrir, porque meu mundo é você.
                 </p>
-                
+
                 <p>
-                 Quero estar logo perto de você. Te animar quando estiver pra baixo, te levar pra sair, te abraçar a todo momento, acordar ao seu lado, te chamar pra ir no cinema comigo, levar doces e besteiras pra você, te presentear a cada conquista sua, dançar contigo, olhar seu sorriso, dizer todos os dias o quanto te amo enquanto seguro sua mão. <span class="highlight">Se um dia o universo for ainda mais generoso vou querer ter filhos contigo e formarmos nossa família juntos.</span> Nós dois com nossos filhos.
+                    Quero estar logo perto de você. Te animar quando estiver pra baixo, te levar pra sair, te abraçar a
+                    todo momento, acordar ao seu lado, te chamar pra ir no cinema comigo, levar doces e besteiras pra
+                    você, te presentear a cada conquista sua, dançar contigo, olhar seu sorriso, dizer todos os dias o
+                    quanto te amo enquanto seguro sua mão. <span class="highlight">Se um dia o universo for ainda mais
+                        generoso vou querer ter filhos contigo e formarmos nossa família juntos.</span> Nós dois com
+                    nossos filhos.
                 </p>
-                
+
                 <p>
-                    Nunca se esqueça o quanto te amo e sempre vou te amar. Independente do nosso futuro saiba que <span class="emphasis">meu coração sempre vai ser seu, boba.</span>
+                    Nunca se esqueça o quanto te amo e sempre vou te amar. Independente do nosso futuro saiba que <span
+                        class="emphasis">meu coração sempre vai ser seu, boba.</span>
                 </p>
-                
+
                 <p>
-                    <span class="highlight">Feliz aniversário, meu amor.</span> Quero passar anos e anos com você. Quero estar sempre ao seu lado. Estou torcendo por ti, torcendo por nós.
+                    <span class="highlight">Feliz aniversário, meu amor.</span> Quero passar anos e anos com você. Quero
+                    estar sempre ao seu lado. Estou torcendo por ti, torcendo por nós.
                 </p>
             </div>
         </div>
+        <div class="message-container" style="margin-top: 4rem;" id="sobre">
+            <p>
+                Todo esse site foi feito aos pouquinhos de madrugada. Qualquer um que tiver o link pode acessar. Então
+                sim, ele está aberta ao mundo. Eu quero que o mundo realmente saiba que amo você.
+            </p>
     </section>
-    
+
     <script>
-        const starCount = 200; 
+        const starCount = 200;
         const container = document.querySelector('.star-field');
 
         for (let i = 0; i < starCount; i++) {
@@ -560,7 +704,7 @@
         openButton.addEventListener('click', () => {
             // Fade out do botão e envelope
             letterDisplay.classList.add('fade-out');
-            
+
             // Mostrar conteúdo da carta
             setTimeout(() => {
                 letterContent.classList.add('show');
@@ -569,4 +713,5 @@
         });
     </script>
 </body>
+
 </html>
